@@ -1,14 +1,15 @@
 <h3>Post a Comment</h3>
-<%=  form_for [@article, @comment] do |f| %>
+<%=  form_for[@article, @comment] do |f| %>
 	<p>
-		<%= f.label :author_name, "Author_Name" %><br>
+		<%= f.label :author_name, "Author Name" %><br>
 		<%= f.text_field :author_name %>
 	</p>
 	<p>
-		<%= f.label :body, "Body" %><br>
+		<%= f.label :body, "Comment" %><br>
 		<%= f.text_area :body %>
 	</p>
 	<p>
 		<%= f.submit "Submit", :disable_with => 'Submiting...' %>
 	</p>
+	<p>Posted <%= distance_of_time_in_words(comment.article.created_at, comment.created_at) %> later</p>
 	<% end %>

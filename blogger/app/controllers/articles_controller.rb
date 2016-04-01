@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def new
+		puts "here"
 		@article = Article.new
 		@comment = Comment.new
 		@comment.article_id = @article.id
