@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
 
 	def new
 		@article = Article.new
+		@comment = Comment.new
+		@comment.article_id = @article.id
 	end
 
 	def create
