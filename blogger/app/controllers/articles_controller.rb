@@ -7,10 +7,10 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+		puts "ehere"
 	end
 
 	def new
-		puts "here"
 		@article = Article.new
 		@comment = Comment.new
 		@comment.article_id = @article.id

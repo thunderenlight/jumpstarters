@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 	
 	def index
-		# @articles = Article.all
+		@comments = Comment.all
 	end
 
 	def show
@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
 	def new
 		# @article = Article.new
-		# @comment = Comment.new
+		@comment = Comment.new
 		# @comment.article_id = @article.id
 	end
 	def create
