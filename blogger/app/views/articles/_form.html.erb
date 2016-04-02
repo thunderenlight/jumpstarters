@@ -1,6 +1,6 @@
 <h1>Create a new Article</h1>
 	<%= render partial: 'form' %>
-	<%= form_for(@article) do |f| %>
+	<%= form_for(@article, html: {multipart: true}) do |f| %>
   <ul>
   <% @article.errors.full_messages.each do |error| %>
     <li><%= error %></li>
@@ -17,6 +17,10 @@
   <p>
     <%= f.label :tag_list %><br />
     <%= f.text_area :tag_list %>
+  </p>
+  <p>
+    <%= f.label :image, "Attach an image" %><br />
+    <%= f.text_area :image %>
   </p>
   <p>
     <%= f.submit %>
