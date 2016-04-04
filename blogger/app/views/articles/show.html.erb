@@ -12,10 +12,35 @@
 
 <h4> Comments</h4>
 <%= render partial: 'articles/comment', collection: @article.comments %>
-<div>
-	<p>Comment by <%= @comment.author_name %></p>
-	<p class="comment"> <%= @comment.body %></p>
-	<p>Posted <%= distance_of_time_in_words(comment.article.created_at, comment.created_at) %> later</p>
+
+<div id="comments">
+	<% @article.comments.each do |comment|  %>
+	<div class='comment'>
+	<p>
+		<em><%= comment.author_name %></em>
+		said <%= distance_of_time_in_words(@article.created_at, comment.created_at) %>
+		later:
+	</p>
+	<p><%= comment.body %></p>
+		
+	</div>
+	<% end %>
+</div>
+<h3>Post a Comment</h3>
+<%=  form_for(@article.comments.new) do |f| %>
+	<p>
+		<%= f.label :author_name, "Author Name" %><br>
+		<%= f.text_field :author_name %>
+	</p>
+	<p>
+		<%= f.label :body, "Comment" %><br>
+		<%= f.text_area :body %>
+	</p>
+	<p>
+		<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+	</p>
+
+	<% end %>
 
 	
 </div>

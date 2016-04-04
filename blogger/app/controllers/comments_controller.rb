@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
 	
-	def index
-		@comments = Comment.all
-	end
+	# def index
+	# 	@comments = Comment.all
+	# end
 
-	def show
-		# @article = Article.find(params[:id])
-	end
+	# def show
+	# 	@article = Article.find(params[:id])
+	# end
 
 	def new
 		# @article = Article.new
@@ -15,8 +15,8 @@ class CommentsController < ApplicationController
 	end
 	def create
 	  # @comment = Comment.new(comment_params)
-	  article = Article.find(params[:comment] [:article_id])
-	  @comment = article.comments.create(comment_params) 
+	  article = Article.find(params[:comment][:article_id])
+	  comment = article.comments.create(comment_params) 
 	  # @comment.save
 
 	  redirect_to article_path(@comment.article)
