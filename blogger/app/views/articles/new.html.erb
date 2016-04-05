@@ -1,9 +1,8 @@
 <h1>Create a new Article</h1>
-	<%= render partial: 'form', :locals => { :article => @article} %>
 	<%= form_for(@article) do |f| %>
   <ul>
   <% @article.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+    <li><%= error.upcase %></li>
   <% end %>
   </ul>
   <p>
@@ -15,6 +14,6 @@
     <%= f.text_area :body %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Save' %>
   </p>
 <% end %>

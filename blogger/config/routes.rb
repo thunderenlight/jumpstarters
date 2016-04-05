@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :comments
   
   resources :tags 
+  get '/login' => 'sessions#show'
+  get '/login' => 'sessions#create'
+  get '/login' => 'sessions#destroy'
   # Example resource route with options:
   #   resources :products do
   #     member do

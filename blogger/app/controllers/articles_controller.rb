@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
+	respond_to :html, :json, :xml
 	include ArticlesHelper
 
 	def index
-		@articles = Article.all
+		@articles, @tag = Article.search_by_tag_name(params[:tag])
+		respond_with(@articles, @tag)
 	end
 
 	def show
@@ -18,8 +20,8 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
-		@article.save
-		redirect_to article_path(@article)
+		flash[:notice] = @article.save ? "Article was created" : "Article was not created"
+		respond_with @article 
 	end
 
 	def destroy
